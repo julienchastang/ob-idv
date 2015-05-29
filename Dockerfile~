@@ -1,0 +1,36 @@
+FROM unidata/idv-gui
+
+MAINTAINER Julien Chastang <chastang@ucar.edu>
+
+ENV WORK_DIR /root/work
+
+###
+# emacs, git
+###
+
+RUN yum install -y curl emacs git jython
+
+# Create some directories
+RUN mkdir -p  /root/.emacs.d/git $WORK_DIR
+
+# Clone various repos
+
+WORKDIR /root/.emacs.d/git
+
+RUN git clone -b python https://github.com/julienchastang/dotemacs
+
+ADD init.el /root/.emacs.d/init.el
+
+# kludge just to force emacs to run once to grab elpa
+RUN emacs --batch -l /root/.emacs.d/init.el || true
+
+ENV CLASSPATH /usr/share/java/commons-logging.jar:\
+/usr/share/java/gnu-getopt.jar:\
+/usr/local/share/java/linkgrammar.jar:\
+/usr/local/share/java/jwnl.jar:\
+
+WORKDIR $WORK_DIR
+
+VOLUME $WORK_DIR
+
+CMD "emacs"
