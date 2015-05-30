@@ -1,4 +1,5 @@
 class resourceLoader:
+    import java.lang.ClassLoader
 
     def loadResource(self, u) :
         sysloader = self.java.lang.ClassLoader.getSystemClassLoader()
