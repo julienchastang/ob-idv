@@ -1,7 +1,6 @@
-class resourceLoader :
-    import java.net.URLClassLoader
+class resourceLoader:
 
-    def loadResource (self, u) :
+    def loadResource(self, u) :
         sysloader = self.java.lang.ClassLoader.getSystemClassLoader()
         return sysloader.getResourceAsStream(u)
 
@@ -30,4 +29,3 @@ for f in my_files:
     Files.copy(inpstr, path)
     execfile(tmpfile)
     Files.delete(path)
-
