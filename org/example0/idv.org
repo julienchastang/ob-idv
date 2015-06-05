@@ -1,0 +1,42 @@
+#+TITLE: org-babel Jython for the IDV
+#+DATE: <2015-05-30 Sat>
+#+AUTHOR: Julien Chastang
+#+EMAIL: chastang@ucar.edu
+#+OPTIONS: ':nil *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t c:nil
+#+OPTIONS: creator:comment d:(not "LOGBOOK") date:t e:t email:nil f:t inline:t
+#+OPTIONS: num:t p:nil pri:nil stat:t tags:t tasks:t tex:t timestamp:t toc:t
+#+OPTIONS: todo:t |:t
+#+CREATOR: Emacs 24.5.1 (Org mode 8.2.10)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+
+
+Need to load some IDV related resources first. 
+
+#+BEGIN_SRC python :session :results none
+  execfile("/home/idv/work/jython/resourceLoader.py")
+#+END_SRC
+
+#+RESULTS:
+
+Now we are ready to make a display leveraging some of the IDV's Jython 
+capability.
+
+#+BEGIN_SRC python :session :output none
+  idv.getStateManager().setViewSize(java.awt.Dimension(800,600))
+  ds = makeDataSource("dods://thredds.ucar.edu/thredds/dodsC/grib/NCEP/NAM/CONUS_80km/NAM_CONUS_80km_20150528_0000.grib1")
+  temp = getData(ds.getName(),"Temperature_height_above_ground")
+  dc = createDisplay('planviewcolor',temp)
+  pause()
+  image = getImage()
+  writeImage('image.png')
+#+END_SRC
+
+#+RESULTS:
+
+
+[[./image.png]]
+
