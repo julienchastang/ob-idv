@@ -1,0 +1,15 @@
+Welcome to ob-idv, an attempt to bring notebook style programming for the IDV
+with the IDV Jython capability via org-babel emacs.
+
+You will need an X11 environment of some sort.
+
+#+BEGIN_SRC sh
+git clone https://github.com/julienchastang/ob-idv
+cd ob-idv
+docker build -t ob-idv .
+sh ob-dv.sh `pwd`
+#+END_SRC
+
+
+
+
