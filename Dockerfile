@@ -2,8 +2,6 @@ FROM unidata/idv-gui
 
 MAINTAINER Julien Chastang <chastang@ucar.edu>
 
-ENV WORK_DIR /home/idv/work
-
 USER root
 
 ###
@@ -35,7 +33,8 @@ RUN ln -s /usr/local/lib/jython/bin/jython/bin/jython /usr/local/bin/jython
 USER idv
 
 # Create some directories
-RUN mkdir -p  /home/idv/.emacs.d/git $WORK_DIR
+RUN mkdir -p  /home/idv/.emacs.d/git 
+RUN mkdir -p  /home/idv/work
 
 # Clone emacs config
 
@@ -61,8 +60,12 @@ ENV CLASSPATH /home/idv/IDV/auxdata.jar:\
 
 ENV JAVA_HOME /home/idv/IDV/jre
 
-WORKDIR $WORK_DIR
+WORKDIR /home/idv/work 
 
-VOLUME $WORK_DIR
+VOLUME /home/idv/work
 
-COPY cmd.sh /home/idv
+COPY cmd.sh /home/idv/
+
+USER root
+RUN chown -R idv:idv /home/idv/
+USER idv
