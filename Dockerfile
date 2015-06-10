@@ -65,6 +65,4 @@ WORKDIR $WORK_DIR
 
 VOLUME $WORK_DIR
 
-COPY cmd.sh $IDV_HOME/
-
-CMD "emacs"
+COPY cmd.sh /home/idv
