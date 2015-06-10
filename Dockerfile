@@ -9,12 +9,23 @@ USER root
 ###
 # install emacs, git, jython
 ###
+
 RUN apt-get update
+
+###
+#
+# http://stackoverflow.com/questions/25193161/chfn-pam-system-error-intermittently-in-docker-hub-builds
+#
+# The following makes colord installation not fail, whatever colord is.
+# 
+###
+
+RUN ln -s -f /bin/true /usr/bin/chfn
 
 RUN apt-get install -y curl emacs git
 
 RUN curl -SL \
-http://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.0/jython-installer-2.7.0.jar \
+ http://search.maven.org/remotecontent?filepath=org/python/jython-installer/2.7.0/jython-installer-2.7.0.jar \
   -o ~/jython-installer-2.7.0.jar
 
 RUN /home/idv/IDV/jre/bin/java -jar ~/jython-installer-2.7.0.jar -s -d /usr/local/lib/jython/bin/jython
