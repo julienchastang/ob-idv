@@ -10,4 +10,4 @@ if [ ! -d $1 ]; then
     mkdir -p $1
 fi
 
-docker run -v $1:/home/idv/work -p 5901:5901  --rm -it ob-idv bash -c "/home/idv/cmd.sh"
+docker run -v $1:/home/idv/work -p 8889:8889 -e DISPLAY=192.168.59.3:0  --rm -it ob-idv

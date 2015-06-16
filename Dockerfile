@@ -18,7 +18,7 @@ RUN apt-get update
 # 
 ###
 
-RUN ln -s -f /bin/true /usr/bin/chfn
+#RUN ln -s -f /bin/true /usr/bin/chfn
 
 RUN apt-get install -y curl emacs git
 
@@ -29,8 +29,6 @@ RUN curl -SL \
 RUN /home/idv/IDV/jre/bin/java -jar ~/jython-installer-2.7.0.jar -s -d /usr/local/lib/jython/bin/jython
 
 RUN ln -s /usr/local/lib/jython/bin/jython/bin/jython /usr/local/bin/jython
-
-USER idv
 
 # Create some directories
 RUN mkdir -p  /home/idv/.emacs.d/git 
@@ -66,6 +64,8 @@ VOLUME /home/idv/work
 
 COPY cmd.sh /home/idv/
 
-USER root
 RUN chown -R idv:idv /home/idv/
+
 USER idv
+
+CMD "emacs"
