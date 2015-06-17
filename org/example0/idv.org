@@ -15,8 +15,8 @@
 
 =resourceLoader.py= refers to IDV set up code I had to put in place to make this
 experiment work. It probably has some shortcomings and ugliness that I will
-clean up in the future, but for this "Hello World" proof-of concept, it will
-suffice for now.
+clean up in the future, but for this "Hello World" proof-of concept, it will do
+for now.
 
 #+BEGIN_SRC python :session :results none
   execfile("/home/idv/work/jython/resourceLoader.py")
@@ -24,9 +24,10 @@ suffice for now.
 
 #+RESULTS:
 
-Now we are ready to make a display leveraging some of the IDV's Jython
-capability. This code snippet is borrowed from the IDV Jython training material
-for making and capturing an image.
+We are ready to make a display leveraging some of the IDV's Jython
+capability. This code snippet is borrowed from the [[https://www.unidata.ucar.edu/software/idv/docs/workshop/isl/JythonBatching.html][IDV Jython training material]]
+for grabbing NCEP NAM data, selecting the temperature field, making and
+capturing an image.
 
 #+BEGIN_SRC python :session :output none
   idv.getStateManager().setViewSize(java.awt.Dimension(800,600))
@@ -39,7 +40,6 @@ for making and capturing an image.
 #+END_SRC
 
 #+RESULTS:
-
 
 [[./image.png]]
 
