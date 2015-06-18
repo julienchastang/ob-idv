@@ -13,7 +13,7 @@
 #+LANGUAGE: en
 #+SELECT_TAGS: export
 
-=resourceLoader.py= refers to IDV set up code I had to put in place to make this
+=resourceLoader.py= refers to IDV setup code I had to put in place to make this
 experiment work. It probably has some shortcomings and ugliness that I will
 clean up in the future, but for this "Hello World" proof-of concept, it will do
 for now.
