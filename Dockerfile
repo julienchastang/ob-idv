@@ -62,8 +62,6 @@ WORKDIR /home/idv/work
 
 VOLUME /home/idv/work
 
-COPY cmd.sh /home/idv/
-
 RUN chown -R idv:idv /home/idv/
 
 USER idv
