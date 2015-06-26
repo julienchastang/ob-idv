@@ -48,11 +48,11 @@ RUN emacs --batch -l /home/idv/.emacs.d/init.el || true
 
 # set classpath
 
-ENV CLASSPATH /home/idv/IDV/auxdata.jar:\
+ENV CLASSPATH /home/idv/IDV/ncIdv.jar:\
 /home/idv/IDV/external.jar:\
 /home/idv/IDV/idv.jar:\
 /home/idv/IDV/local-visad.jar:\
-/home/idv/IDV/ncIdv.jar:\
+/home/idv/IDV/auxdata.jar:\
 /home/idv/IDV/sunjce_provider.jar:\
 /home/idv/IDV/visad.jar
 
